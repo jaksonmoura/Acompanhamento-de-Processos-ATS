@@ -1,0 +1,19 @@
+<?php
+$title = "Login";
+include '../partials/header.php';
+// echo hash('sha512', 'administrativo.ats');
+ ?>
+    <form class='box_login' action="verify.php" method="post">
+        <h3>Entrar no sistema:</h3>
+        Usuário:<br>
+        <input type="text" name="username" autofocus><br>
+        Senha:<br>
+        <input type="password" name="password"><br>
+        <!-- <input type="hidden" name='url' value="<?php // echo $_GET['redirects_to']; ?>"> -->
+        <div class="actions">
+          <input type="submit" name="submit" value="Login">
+        </div>
+    </form>
+<?php
+include '../partials/footer.php';
+ ?>
