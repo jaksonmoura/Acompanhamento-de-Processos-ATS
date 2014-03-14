@@ -48,9 +48,13 @@ $status_r = $link->query("SELECT * from tipos_status;");
         </div>
       </div>
       <div class="right">
-        <div class="field vigencia">
-          <label>Período de vigência</label>
-          <input type="text" name="vigencia" id="vigencia" value="<?php echo $c['vigencia'] ?>"/>
+        <div class="field inicio_vigencia">
+          <label>Início de vigência</label>
+          <input type="text" name="inicio_vigencia" id="inicio_vigencia" value="<?php echo $c['inicio_vigencia'] ?>"/>
+        </div>
+        <div class="field fim_vigencia">
+          <label>Fim de vigência</label>
+          <input type="text" name="fim_vigencia" id="fim_vigencia" value="<?php echo $c['fim_vigencia'] ?>"/>
         </div>
         <div class="field valor_contrato">
           <label>Valor do Contrato</label>
@@ -60,14 +64,6 @@ $status_r = $link->query("SELECT * from tipos_status;");
           <label>Valor previsto (Mensal)</label>
           <input type="text" name="valor_previsto" id="valor_previsto" value="<?php echo $c['valor_previsto'] ?>"/>
         </div>
-        <div class="field publicado">
-          <label>Contrado publicado?</label>
-          <?php if ($c['publicado'] == true){ ?>
-          <input type="checkbox" name="publicado" id="publicado" value="1" checked="true"/>
-          <?php }else{ ?>
-          <input type="checkbox" name="publicado" id="publicado" value="1"/>
-          <?php } ?>
-        </div>
         <div class="field num_doe">
           <label>Num. DOE</label>
           <input type="text" name="num_doe" id="num_doe" value="<?php echo $c['num_doe'] ?>"/>
@@ -75,6 +71,14 @@ $status_r = $link->query("SELECT * from tipos_status;");
         <div class="field num_portaria">
           <label>Num. Portaria</label>
           <input type="text" name="num_portaria" id="num_portaria" value="<?php echo $c['num_portaria'] ?>"/>
+        </div>
+        <div class="field publicado">
+          <label>Contrado publicado?</label>
+          <?php if ($c['publicado'] == true){ ?>
+          <input type="checkbox" name="publicado" id="publicado" value="1" checked="true"/>
+          <?php }else{ ?>
+          <input type="checkbox" name="publicado" id="publicado" value="1"/>
+          <?php } ?>
         </div>
         <div class="field publica_portaria">
           <label>Pública</label>

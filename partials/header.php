@@ -8,9 +8,9 @@
     include_once 'before_actions.php';
     header('Content-Type: text/html; charset=utf8'); ?>
     <?php if (isset($title)): ?>
-     <title><?php echo $title; ?> - Licitações - ATS</title>
+     <title><?php echo $title; ?> - Acomp. de Contratos - ATS</title>
     <?php else: ?>
-     <title>Licitações - ATS</title>
+     <title>Acomp. de Contratos - ATS</title>
     <?php endif ?>
      <script src="../assets/js/jquery.js"></script>
      <script src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
@@ -48,7 +48,7 @@
       <?php endif ?>
       <script type="text/javascript">$('.notice').hide().slideDown().delay(5000).slideUp();</script>
     <header>
-      <div class="logo"><a href="/ac/dir/list.php"><img src="../assets/img/icon.png" alt="ATS" title='Licitação - ATS'/>Contratos</a></div>
+      <div class="logo"><a href="/ac/dir/list.php"><img src="../assets/img/icon.png" alt="ATS" title='Acomp. de Contratos - ATS'/>Contratos</a></div>
       <nav class="s_links">
         <ul>
           <li><a href="/ac/contratos/index.php">Início</a></li>

@@ -10,7 +10,12 @@ $c = mysqli_fetch_assoc($contrato);
 <body>
   <div class="box_contrato">
     <h2 class="hx_left_alg"><?php echo "Contrato nº ".$c['num_contrato']; ?></h2>
-    <div class="actions_right"><a href="/ac/contratos/edit.php?id=<?php echo $id; ?>">Editar contrato</a></div>
+    <div class="actions_right">
+      <a href="/ac/contratos/edit.php?id=<?php echo $id; ?>">Editar contrato</a>
+      <?php if ($_SESSION['admin'] == true): ?>
+        <a class="delete" href="/ac/contratos/delete.php?id=<?php echo $id; ?>">Remover contrato</a>
+      <?php endif ?>
+    </div>
     <div class="contrato">
 
       <div class="left_box">
@@ -36,7 +41,7 @@ $c = mysqli_fetch_assoc($contrato);
         </div>
         <div class="field">
           <label>Período de vigência</label>
-          <p id="vigencia"><?php echo $c['vigencia'] ?></p>
+          <p id="vigencia"><?php echo strftime('%d/%m/%y', strtotime($c['inicio_vigencia']))." - ".strftime('%d/%m/%y', strtotime($c['fim_vigencia'])) ?></p>
         </div>
       </div>
 

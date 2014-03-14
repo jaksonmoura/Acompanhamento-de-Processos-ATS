@@ -30,7 +30,7 @@ $status = $link->query("SELECT * from tipos_status;");
         </div>
         <div class="field modalidades_id">
           <label>Modalidade:</label>
-          <select name="modalidades_id" id="modalidades_id">
+          <select name="modalidades_id" id="modalidades_id" required="true">
             <option value="">Escolha:</option>
           <?php  while ($m = mysqli_fetch_assoc($modalidades)) { ?>
             <option value="<?php echo $m['id']; ?>"><?php echo $m['nome']; ?></option>
@@ -39,9 +39,13 @@ $status = $link->query("SELECT * from tipos_status;");
         </div>
       </div>
       <div class="right">
-        <div class="field vigencia">
-          <label>Período de vigência</label>
-          <input type="text" name="vigencia" id="vigencia" />
+        <div class="field inicio_vigencia">
+          <label>Início de vigência</label>
+          <input type="text" name="inicio_vigencia" id="inicio_vigencia" />
+        </div>
+        <div class="field fim_vigencia">
+          <label>Fim de vigência</label>
+          <input type="text" name="fim_vigencia" id="fim_vigencia" />
         </div>
         <div class="field valor_contrato">
           <label>Valor do Contrato</label>
@@ -51,10 +55,6 @@ $status = $link->query("SELECT * from tipos_status;");
           <label>Valor previsto (Mensal)</label>
           <input type="text" name="valor_previsto" id="valor_previsto" />
         </div>
-        <div class="field publicado">
-          <label>Contrado publicado?</label>
-          <input type="checkbox" name="publicado" id="publicado" value="1" />
-        </div>
         <div class="field num_doe">
           <label>Num. DOE</label>
           <input type="text" name="num_doe" id="num_doe" />
@@ -62,6 +62,10 @@ $status = $link->query("SELECT * from tipos_status;");
         <div class="field num_portaria">
           <label>Num. Portaria</label>
           <input type="text" name="num_portaria" id="num_portaria" />
+        </div>
+        <div class="field publicado">
+          <label>Contrado publicado?</label>
+          <input type="checkbox" name="publicado" id="publicado" value="1" />
         </div>
         <div class="field publica_portaria">
           <label>Pública</label>

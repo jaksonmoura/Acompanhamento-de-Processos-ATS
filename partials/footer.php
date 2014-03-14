@@ -6,7 +6,7 @@
     </footer>
   <script>
   $(function() {
-    $( "#vigencia" ).datepicker();
+    $( "#inicio_vigencia, #fim_vigencia" ).datepicker();
   });
   </script>
 </body>

@@ -37,7 +37,7 @@
           while ($c = mysqli_fetch_assoc($contratos)){
             $two_m = strtotime("+60 days");
             $four_m = strtotime("+120 days");
-            $vigencia = strtotime($c['vigencia']);
+            $vigencia = strtotime($c['fim_vigencia']);
             if ($two_m > $vigencia) {
               echo '<tr class="warning">';
             } elseif ($four_m > $vigencia and $two_m < $vigencia) {
@@ -50,7 +50,7 @@
             // echo "<td><a href='show.php?id=".$c['id']."'>".$c['contratado']."</a></td>";
             // echo "<td><a href='show.php?id=".$c['id']."'>".$c['objeto']."</a></td>";
             echo "<td><a href='show.php?id=".$c['id']."'>".$c['modalidade']."</a></td>";
-            echo "<td>".strftime('%d/%m/%Y', strtotime($c['vigencia']))."</td>";
+            echo "<td>".strftime('%d/%m/%y', strtotime($c['inicio_vigencia']))." - ".strftime('%d/%m/%y', strtotime($c['fim_vigencia']))."</td>";
             echo "<td><a href='show.php?id=".$c['id']."'>".number_format($c['valor_contrato'], 2, ',', '.')."</a></td>";
             echo "<td><a href='show.php?id=".$c['id']."'>".number_format($c['valor_previsto'], 2, ',', '.')."</a></td>";
             if ($c['publicado'] == true) {

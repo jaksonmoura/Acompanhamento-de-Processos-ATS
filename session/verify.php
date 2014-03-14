@@ -10,6 +10,11 @@ if(isset($_POST['submit'])){
         session_start();
         $_SESSION['username'] = $row['username'];
         $_SESSION['logged'] = TRUE;
+        if ($row['admin'] == true) {
+            $_SESSION['admin'] = TRUE;
+        } else {
+            $_SESSION['admin'] = false;
+        }
         $_SESSION['message'] = 'Você entrou!';
         // $url = $_POST['url'];
         // echo $url;
