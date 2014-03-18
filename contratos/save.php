@@ -20,13 +20,14 @@ if($_POST){
     $valor_previsto = !empty($_POST['valor_previsto']) ? $_POST['valor_previsto'] : "NULL";
     $publicado = (isset($_POST['publicado']) == true) ? 1 : 0;
     echo $publicado;
+    break;
     $num_doe = !empty($_POST['num_doe']) ? intval($_POST['num_doe']) : "NULL";
     $num_portaria = !empty($_POST['num_portaria']) ? intval($_POST['num_portaria']) : "NULL";
     $publica_portaria = !empty($_POST['publica_portaria']) ? intval($_POST['publica_portaria']) : "NULL";
     $status = $_POST['status'];
 
     if ($type == 0) {
-        $link->query("INSERT INTO contratos (num_contrato, processo, contratado, objeto, modalidades_id, inicio_vigencia, fim_vigencia, valor_contrato, valor_previsto, publicado, num_doe, num_portaria, publica_portaria, status) VALUES ($num_contrato, '$processo', '$contratado', '$objeto', $modalidades_id, $inicio_vigencia, $fim_vigencia, $valor_contrato, $valor_previsto, $publicado, $num_doe, $num_portaria, $publica_portaria, '$status')");
+        $link->query("INSERT INTO contratos (num_contrato, processo, contratado, objeto, modalidades_id, inicio_vigencia, fim_vigencia, valor_contrato, valor_previsto, publicado, num_doe, num_portaria, publica_portaria, status) VALUES ('$num_contrato', '$processo', '$contratado', '$objeto', $modalidades_id, $inicio_vigencia, $fim_vigencia, $valor_contrato, $valor_previsto, $publicado, $num_doe, '$num_portaria', '$publica_portaria', '$status')");
         $_SESSION['message'] = 'Contrato salvo com sucesso!';
         // echo $link->mysql_error();
         header("location: /ac/contratos/index.php");
@@ -36,12 +37,13 @@ if($_POST){
             processo = '$processo',
             contratado = '$contratado',
             objeto = '$objeto',
-            modalidades_id = '$modalidades_id',
-            vigencia = '$vigencia',
-            valor_contrato = '$valor_contrato',
-            valor_previsto = '$valor_previsto',
-            publicado = '$publicado',
-            num_doe = '$num_doe',
+            modalidades_id = $modalidades_id,
+            inicio_vigencia = $inicio_vigencia,
+            fim_vigencia = $fim_vigencia,
+            valor_contrato = $valor_contrato,
+            valor_previsto = $valor_previsto,
+            publicado = $publicado,
+            num_doe = $num_doe,
             num_portaria = '$num_portaria',
             publica_portaria = '$publica_portaria',
             status = '$status'

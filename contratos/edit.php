@@ -19,11 +19,11 @@ $status_r = $link->query("SELECT * from tipos_status;");
         <input type="hidden" name="id" value="<?php echo $id ?>">
         <div class="field num_contrato">
           <label>Num. Contrato</label>
-          <input type="text" name="num_contrato" id="num_contrato" value="<?php echo $c['num_contrato'] ?>"/>
+          <input type="text" name="num_contrato" id="num_contrato" value="<?php echo $c['num_contrato'] ?>" pattern="\d+\/\d{2}" placeholder="Ex.: 10/14"/>
         </div>
         <div class="field processo">
           <label>Processo</label>
-          <textarea name="processo" id="processo"><?php echo $c['processo'] ?></textarea>
+          <textarea name="processo" id="processo" ><?php echo $c['processo'] ?></textarea>
         </div>
         <div class="field contratado">
           <label>Contratado</label>
@@ -50,11 +50,11 @@ $status_r = $link->query("SELECT * from tipos_status;");
       <div class="right">
         <div class="field inicio_vigencia">
           <label>Início de vigência</label>
-          <input type="text" name="inicio_vigencia" id="inicio_vigencia" value="<?php echo $c['inicio_vigencia'] ?>"/>
+          <input type="text" name="inicio_vigencia" id="inicio_vigencia" value="<?php echo strftime('%d/%m/%Y', strtotime($c['inicio_vigencia'])) ?>"/>
         </div>
         <div class="field fim_vigencia">
           <label>Fim de vigência</label>
-          <input type="text" name="fim_vigencia" id="fim_vigencia" value="<?php echo $c['fim_vigencia'] ?>"/>
+          <input type="text" name="fim_vigencia" id="fim_vigencia" value="<?php echo strftime('%d/%m/%Y', strtotime($c['fim_vigencia'])) ?>"/>
         </div>
         <div class="field valor_contrato">
           <label>Valor do Contrato</label>

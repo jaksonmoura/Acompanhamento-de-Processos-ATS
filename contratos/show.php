@@ -13,7 +13,11 @@ $c = mysqli_fetch_assoc($contrato);
     <div class="actions_right">
       <a href="/ac/contratos/edit.php?id=<?php echo $id; ?>">Editar contrato</a>
       <?php if ($_SESSION['admin'] == true): ?>
-        <a class="delete" href="/ac/contratos/delete.php?id=<?php echo $id; ?>">Remover contrato</a>
+        <form action="delete.php" method="post">
+          <input type="hidden" name="c_id" value="<?php echo $id; ?>">
+          <input type="submit" value="Remover contrato" class="delete">
+        </form>
+
       <?php endif ?>
     </div>
     <div class="contrato">

@@ -14,7 +14,7 @@ $status = $link->query("SELECT * from tipos_status;");
         <input type="hidden" name="type" value="0">
         <div class="field num_contrato">
           <label>Num. Contrato</label>
-          <input type="text" name="num_contrato" id="num_contrato" />
+          <input type="text" name="num_contrato" id="num_contrato" pattern="\d+\/\d{2}" placeholder="Ex.: 10/14" />
         </div>
         <div class="field processo">
           <label>Processo</label>
