@@ -1,7 +1,7 @@
 <?php
 $title = "Login";
 include '../partials/header.php';
-// echo hash('sha512', 'administrativo.ats');
+// echo hash('sha512', 'test');
  ?>
     <form class='box_login' action="verify.php" method="post">
         <h3>Entrar no sistema:</h3>
