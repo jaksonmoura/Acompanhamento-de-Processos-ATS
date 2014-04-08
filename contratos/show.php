@@ -21,7 +21,6 @@ $c = mysqli_fetch_assoc($contrato);
       <?php endif ?>
     </div>
     <div class="contrato">
-
       <div class="left_box">
         <div class="field">
           <label>Num. Contrato</label>
@@ -52,11 +51,11 @@ $c = mysqli_fetch_assoc($contrato);
       <div class="right_box">
         <div class="field">
           <label>Valor do Contrato</label>
-          <p id="valor_contrato"><?php echo $c['valor_contrato'] ?></p>
+          <p id="valor_contrato"><?php echo number_format($c['valor_contrato'], 2, ',', '.') ?></p>
         </div>
         <div class="field">
           <label>Valor previsto (Mensal)</label>
-          <p id="valor_previsto"><?php echo $c['valor_previsto'] ?></p>
+          <p id="valor_previsto"><?php echo number_format($c['valor_previsto'], 2, ',', '.') ?></p>
         </div>
         <div class="field">
           <label>Publicado?</label>
@@ -71,7 +70,7 @@ $c = mysqli_fetch_assoc($contrato);
           <p id="num_portaria"><?php echo $c['num_portaria'] ?></p>
         </div>
         <div class="field">
-          <label>Pública</label>
+          <label>Port. Pública</label>
           <p id="publica_portaria"><?php echo $c['publica_portaria'] ?></p>
         </div>
         <div class="field">

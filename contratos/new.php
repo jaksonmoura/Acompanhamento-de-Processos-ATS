@@ -68,7 +68,7 @@ $status = $link->query("SELECT * from tipos_status;");
           <input type="checkbox" name="publicado" id="publicado" value="1" />
         </div>
         <div class="field publica_portaria">
-          <label>Pública</label>
+          <label>Port. Pública</label>
           <input type="text" name="publica_portaria" id="publica_portaria" />
         </div>
         <div class="field status">

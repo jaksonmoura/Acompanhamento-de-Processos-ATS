@@ -14,25 +14,18 @@
     <?php endif ?>
      <script src="../assets/js/jquery.js"></script>
      <script src="../assets/js/jquery-ui-1.10.4.custom.min.js"></script>
+     <script src="../assets/js/jquery.maskMoney.js"></script>
+     <script src="../assets/js/jquery.freezeheader.js"></script>
      <link rel="stylesheet" href="../assets/css/style.css"/>
      <link rel="stylesheet" href="../assets/css/jquery-ui-1.10.4.custom.min.css"/>
      <script>
-
+        $(document).ready(function() {
+            $("#tb_content").freezeHeader();
+        });
        $(function() {
          $( document ).tooltip({
             track: true
           });
-         $( "#datepicker" ).datepicker( {
-            changeMonth: true,
-            changeYear: true,
-            showButtonPanel: true,
-            dateFormat: 'yy-mm-dd',
-            onClose: function(dateText, inst) {
-                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-                $(this).datepicker('setDate', new Date(year, month, 1));
-            }
-        });
        });
        </script>
    </head>
@@ -53,6 +46,11 @@
         <ul>
           <li><a href="/ac/contratos/index.php">Início</a></li>
           <li><a href="/ac/contratos/new.php">Novo contrato</a></li>
+          <li><a href="/ac/contratos/filter.php">Filtro</a>
+            <ul>
+              <li><a href="/ac/contratos/expires.php">Vencimentos</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <nav class="user_session">

@@ -1,31 +1,37 @@
-  <?php
-    include_once '../config/session.php';
-    include '../partials/header.php';
-    $contratos = $link->query("SELECT c.*, m.nome as modalidade from contratos as c INNER JOIN modalidades AS m where c.modalidades_id = m.id;");
-    $total = $link->query("SELECT count(*) as total from contratos;");
-    $status_r = $link->query("SELECT * from tipos_status;");
-    $t = mysqli_fetch_assoc($total);
+<?php
+include_once '../config/session.php';
+include_once '../partials/before_actions.php';
+include_once '../partials/header.php';
+if ($_GET['param']) {
+  $param = $_GET['param'];
+  // $contratos = $link->query("SELECT * from contratos where status like '%$param%';");
+  $contratos = $link->query("SELECT c.*, m.nome as modalidade from contratos as c INNER JOIN modalidades AS m where c.status like '%$param%' group by c.id;");
+}
+$status_r = $link->query("SELECT * from tipos_status;");
+?>
 
-  ?>
-    <div class="overall">
-      <h1>Lista de contratos</h1>
-      <div class="total_contratos">
-        <div class="qte"><?php echo $t['total'] ?></div>
-        <div class="qte_label">cadastrados</div>
+<div class="main_content">
+  <div class="filter">
+    <h2>Filtrar:</h2>
+    <form action="filter.php" method="get">
+      <div class="field">
+        <label for="param">Por status:</label>
+        <select name="param" id="status">
+          <option value="">Escolha:</option>
+        <?php while ($s = mysqli_fetch_assoc($status_r)) { ?>
+          <option value="<?php echo $s['id'] ?>"><?php echo $s['nome'] ?></option>
+        <?php } ?>
+        </select>
       </div>
-    </div>
-    <div class="subtitle">
-      <span>Legenda:</span>
-      <ul>
-        <li class="lt_2m">< 2 meses para vencer</li>
-        <li class="lt_4m">< 4 meses para vencer</li>
-        <li class=""><abbr class='ass_c'>ASC</abbr>Ag. Assinatura do Contrato</li>
-        <li class=""><abbr class='ass_p'>ASP</abbr>Ag. Assinatura da Portaria</li>
-        <li class=""><abbr class='ag_pub'>AGP</abbr>Ag. Publicação</li>
-        <li class=""><abbr class='ativo'>ATV</abbr>Ativo</li>
-      </ul>
-    </div>
-    <table id="tb_content">
+      <div class="actions">
+        <input type="submit" value="Filtrar »">
+      </div>
+    </form>
+  </div>
+</div>
+
+<?php if ($contratos): ?>
+  <table id="tb_content">
       <thead>
         <tr>
           <th class="tnum_contrato">Nº.</th>
@@ -94,23 +100,12 @@
                 }
               }
             echo "</td>";
-            // echo '<td>';
-            // if (LOGGED) {
-            //   $url = $_SERVER['REQUEST_URI'];
-            //   echo '
-            //         <a href="edit.php?id='.$c['id'].'&file='.$c['name'].'&redirects_to='.$url.'"><img src="../assets/img/edit.png" alt="Editar" title="Editar"></a>
-            //         <form class="fremove" action="remove.php" method="post">
-            //           <input class="iremove" type="submit" value="Remover" title="Remover">
-            //           <input type="hidden" name="file" value='.$c['id'].'>
-            //           <input type="hidden" name="name" value='.$c['name'].'>
-            //           <input type="hidden" name="redirects_to" value='.$url.'>
-            //         </form>';
-            //   echo "<a href='/licitacao/file/new.php?did=".$c['id']."&l=".$c['name']."'><img src='../assets/img/upload2.png'></a>";
-            // }
-            // echo '</td>';
             echo '</tr>';
           }
         ?>
       </tbody>
     </table>
-<?php include '../partials/footer.php'; ?>
+<?php endif ?>
+
+
+<?php include_once '../partials/footer.php'; ?>

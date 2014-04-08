@@ -1,29 +1,18 @@
   <?php
     include_once '../config/session.php';
     include '../partials/header.php';
-    $contratos = $link->query("SELECT c.*, m.nome as modalidade from contratos as c INNER JOIN modalidades AS m where c.modalidades_id = m.id;");
-    $total = $link->query("SELECT count(*) as total from contratos;");
+    $contratos = $link->query("SELECT c.*, m.nome as modalidade from contratos as c INNER JOIN modalidades AS m WHERE c.modalidades_id = m.id AND c.fim_vigencia < NOW() + INTERVAL 60 DAY;");
+    $total = $link->query("SELECT count(*) as total from contratos WHERE fim_vigencia < NOW() + INTERVAL 60 DAY;");
     $status_r = $link->query("SELECT * from tipos_status;");
     $t = mysqli_fetch_assoc($total);
 
   ?>
     <div class="overall">
-      <h1>Lista de contratos</h1>
+      <h1>Lista de contratos que vencem em 2 meses ou menos</h1>
       <div class="total_contratos">
         <div class="qte"><?php echo $t['total'] ?></div>
         <div class="qte_label">cadastrados</div>
       </div>
-    </div>
-    <div class="subtitle">
-      <span>Legenda:</span>
-      <ul>
-        <li class="lt_2m">< 2 meses para vencer</li>
-        <li class="lt_4m">< 4 meses para vencer</li>
-        <li class=""><abbr class='ass_c'>ASC</abbr>Ag. Assinatura do Contrato</li>
-        <li class=""><abbr class='ass_p'>ASP</abbr>Ag. Assinatura da Portaria</li>
-        <li class=""><abbr class='ag_pub'>AGP</abbr>Ag. Publicação</li>
-        <li class=""><abbr class='ativo'>ATV</abbr>Ativo</li>
-      </ul>
     </div>
     <table id="tb_content">
       <thead>

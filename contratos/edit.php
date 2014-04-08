@@ -58,11 +58,11 @@ $status_r = $link->query("SELECT * from tipos_status;");
         </div>
         <div class="field valor_contrato">
           <label>Valor do Contrato</label>
-          <input type="text" name="valor_contrato" id="valor_contrato" value="<?php echo $c['valor_contrato'] ?>"/>
+          <input type="text" name="valor_contrato" id="valor_contrato" value="<?php echo number_format($c['valor_contrato'], 2, ',', '.') ?>"/>
         </div>
         <div class="field valor_previsto">
           <label>Valor previsto (Mensal)</label>
-          <input type="text" name="valor_previsto" id="valor_previsto" value="<?php echo $c['valor_previsto'] ?>"/>
+          <input type="text" name="valor_previsto" id="valor_previsto" value="<?php echo number_format($c['valor_previsto'], 2, ',', '.') ?>"/>
         </div>
         <div class="field num_doe">
           <label>Num. DOE</label>
@@ -81,7 +81,7 @@ $status_r = $link->query("SELECT * from tipos_status;");
           <?php } ?>
         </div>
         <div class="field publica_portaria">
-          <label>Pública</label>
+          <label>Port. Pública</label>
           <input type="text" name="publica_portaria" id="publica_portaria" value="<?php echo $c['publica_portaria'] ?>"/>
         </div>
         <div class="field status">
